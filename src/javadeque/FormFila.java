@@ -34,13 +34,13 @@ public class FormFila extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtRG = new javax.swing.JTextField();
         txtIdade = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
-        btnAdd1 = new javax.swing.JButton();
+        btnAddFirst = new javax.swing.JButton();
+        btnAddLast = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listFilaNormal = new javax.swing.JTextArea();
-        btnAtender = new javax.swing.JButton();
-        btnAtender1 = new javax.swing.JButton();
+        listFilaDupla = new javax.swing.JTextArea();
+        btnAtenderIni = new javax.swing.JButton();
+        btnAtenderFim = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
@@ -90,20 +90,20 @@ public class FormFila extends javax.swing.JFrame {
         txtIdade.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         txtIdade.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Idade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Light", 0, 18))); // NOI18N
 
-        btnAdd.setBackground(new java.awt.Color(255, 255, 255));
-        btnAdd.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javadeque/add-user.png"))); // NOI18N
-        btnAdd.setText("Add Inicio");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnAddFirst.setBackground(new java.awt.Color(255, 255, 255));
+        btnAddFirst.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        btnAddFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javadeque/add-user.png"))); // NOI18N
+        btnAddFirst.setText("Add Inicio");
+        btnAddFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnAddFirstActionPerformed(evt);
             }
         });
 
-        btnAdd1.setBackground(new java.awt.Color(255, 255, 255));
-        btnAdd1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        btnAdd1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javadeque/add-user.png"))); // NOI18N
-        btnAdd1.setText("Add Fim");
+        btnAddLast.setBackground(new java.awt.Color(255, 255, 255));
+        btnAddLast.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        btnAddLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javadeque/add-user.png"))); // NOI18N
+        btnAddLast.setText("Add Fim");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -111,7 +111,7 @@ public class FormFila extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addContainerGap()
@@ -121,7 +121,7 @@ public class FormFila extends javax.swing.JFrame {
                                 .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGap(57, 57, 57)
-                            .addComponent(btnAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnAddLast, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -134,32 +134,31 @@ public class FormFila extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(btnAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddLast, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DEQUE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Light", 0, 24))); // NOI18N
 
-        listFilaNormal.setEditable(false);
-        listFilaNormal.setColumns(20);
-        listFilaNormal.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
-        listFilaNormal.setRows(5);
-        listFilaNormal.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DEQUE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Light", 0, 24))); // NOI18N
-        jScrollPane1.setViewportView(listFilaNormal);
+        listFilaDupla.setEditable(false);
+        listFilaDupla.setColumns(20);
+        listFilaDupla.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        listFilaDupla.setRows(5);
+        listFilaDupla.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DEQUE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Light", 0, 24))); // NOI18N
+        jScrollPane1.setViewportView(listFilaDupla);
 
-        btnAtender.setBackground(new java.awt.Color(255, 255, 255));
-        btnAtender.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        btnAtender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javadeque/doctor-atend.png"))); // NOI18N
-        btnAtender.setText("Atender Ini");
+        btnAtenderIni.setBackground(new java.awt.Color(255, 255, 255));
+        btnAtenderIni.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        btnAtenderIni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javadeque/doctor-atend.png"))); // NOI18N
+        btnAtenderIni.setText("Atender Ini");
 
-        btnAtender1.setBackground(new java.awt.Color(255, 255, 255));
-        btnAtender1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        btnAtender1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javadeque/doctor-atend.png"))); // NOI18N
-        btnAtender1.setText("Atender Fim");
-        btnAtender1.setActionCommand("Atender Fim");
+        btnAtenderFim.setBackground(new java.awt.Color(255, 255, 255));
+        btnAtenderFim.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        btnAtenderFim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javadeque/doctor-atend.png"))); // NOI18N
+        btnAtenderFim.setText("Atender Fim");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -169,9 +168,9 @@ public class FormFila extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(116, 116, 116)
-                        .addComponent(btnAtender, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAtenderIni, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61)
-                        .addComponent(btnAtender1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAtenderFim, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(222, 222, 222)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -182,8 +181,8 @@ public class FormFila extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAtender, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAtender1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAtenderIni, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtenderFim, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
@@ -212,9 +211,9 @@ public class FormFila extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnAddFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFirstActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddActionPerformed
+    }//GEN-LAST:event_btnAddFirstActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,16 +251,16 @@ public class FormFila extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnAdd1;
-    private javax.swing.JButton btnAtender;
-    private javax.swing.JButton btnAtender1;
+    private javax.swing.JButton btnAddFirst;
+    private javax.swing.JButton btnAddLast;
+    private javax.swing.JButton btnAtenderFim;
+    private javax.swing.JButton btnAtenderIni;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea listFilaNormal;
+    private javax.swing.JTextArea listFilaDupla;
     private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNome;
     private javax.swing.JLabel txtProx;
