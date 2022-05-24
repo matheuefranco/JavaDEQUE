@@ -1,9 +1,11 @@
 
 package javadeque;
+import java.util.*;
+import javax.swing.JOptionPane;
 
 
 public class FormFila extends javax.swing.JFrame {
-
+    Deque<Pessoa> filaDupla = new LinkedList<>();
 
     public FormFila() {
         initComponents();
@@ -28,6 +30,7 @@ public class FormFila extends javax.swing.JFrame {
         listFilaDupla = new javax.swing.JTextArea();
         btnAtenderIni = new javax.swing.JButton();
         btnAtenderFim = new javax.swing.JButton();
+        btnMostraInvertido = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
@@ -141,27 +144,38 @@ public class FormFila extends javax.swing.JFrame {
         btnAtenderIni.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         btnAtenderIni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javadeque/doctor-atend.png"))); // NOI18N
         btnAtenderIni.setText("Atender Ini");
+        btnAtenderIni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtenderIniActionPerformed(evt);
+            }
+        });
 
         btnAtenderFim.setBackground(new java.awt.Color(255, 255, 255));
         btnAtenderFim.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         btnAtenderFim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javadeque/doctor-atend.png"))); // NOI18N
         btnAtenderFim.setText("Atender Fim");
 
+        btnMostraInvertido.setBackground(new java.awt.Color(255, 255, 255));
+        btnMostraInvertido.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        btnMostraInvertido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javadeque/postura-invertida-do-homem-de-exercicio.png"))); // NOI18N
+        btnMostraInvertido.setText("Mostrar Invertido");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(btnAtenderIni, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addComponent(btnAtenderFim, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(222, 222, 222)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnMostraInvertido, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(btnAtenderIni, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAtenderFim, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(429, 429, 429))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +185,9 @@ public class FormFila extends javax.swing.JFrame {
                     .addComponent(btnAtenderIni, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtenderFim, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMostraInvertido, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
 
@@ -198,9 +214,39 @@ public class FormFila extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    void mostra(){
+       listFilaDupla.setText("");
+       if(!filaDupla.isEmpty())
+           for(Pessoa p:filaDupla)
+               listFilaDupla.append(p+"\n");
+    }
+    void mostraInvertido(){
+        listFilaDupla.setText("");
+        Iterator deque = filaDupla.descendingIterator();
+        if(!filaDupla.isEmpty())
+            while(deque.hasNext())
+                listFilaDupla.append(deque.next()+"\n");
+    }
+    
     private void btnAddFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFirstActionPerformed
-       
+        Pessoa p = new Pessoa();
+        p.setNome(txtNome.getText());
+        p.setRg(txtRG.getText());
+        p.setIdade(Integer.parseInt(txtIdade.getText()));
+        filaDupla.addFirst(p);
+        mostra();
     }//GEN-LAST:event_btnAddFirstActionPerformed
+
+    private void btnAtenderIniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtenderIniActionPerformed
+        Pessoa p;
+        if(!filaDupla.isEmpty()){
+           p = filaDupla.removeFirst();
+           txtProx.setText("Prox:"+p.getNome());
+           mostra();
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Estrutura vazia!");
+    }//GEN-LAST:event_btnAtenderIniActionPerformed
 
 
     public static void main(String args[]) {
@@ -240,6 +286,7 @@ public class FormFila extends javax.swing.JFrame {
     private javax.swing.JButton btnAddLast;
     private javax.swing.JButton btnAtenderFim;
     private javax.swing.JButton btnAtenderIni;
+    private javax.swing.JButton btnMostraInvertido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
