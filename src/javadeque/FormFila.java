@@ -159,6 +159,11 @@ public class FormFila extends javax.swing.JFrame {
         btnMostraInvertido.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         btnMostraInvertido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javadeque/postura-invertida-do-homem-de-exercicio.png"))); // NOI18N
         btnMostraInvertido.setText("Mostrar Invertido");
+        btnMostraInvertido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostraInvertidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -247,6 +252,10 @@ public class FormFila extends javax.swing.JFrame {
         else
             JOptionPane.showMessageDialog(null, "Estrutura vazia!");
     }//GEN-LAST:event_btnAtenderIniActionPerformed
+
+    private void btnMostraInvertidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostraInvertidoActionPerformed
+        mostraInvertido();
+    }//GEN-LAST:event_btnMostraInvertidoActionPerformed
 
 
     public static void main(String args[]) {
